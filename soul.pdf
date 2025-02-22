@@ -197,7 +197,7 @@ def start_attack_reply(message, king, monking, time):
     response = f"{username}, ✅🔥𝘾𝙊𝙉𝙂𝙍𝘼𝙏𝙐𝙇𝘼𝙏𝙄𝙊𝙉𝙎🔥✅\n\n𝐓𝐚𝐫𝐠𝐞𝐭: {king}\n𝐏𝐨𝐫𝐭: {monking}\n𝐓𝐢𝐦𝐞: {time} 𝐒𝐞𝐜𝐨𝐧𝐝𝐬\n𝐌𝐞𝐭𝐡𝐨𝐝: mon\n\n🌟 DDOS LAGADO OFFICIAL..!💀"
     bot.reply_to(message, response)
 
-mon_cooldown = {}
+attack_cooldown = {}
 
 COOLDOWN_TIME =0
 
