@@ -6,7 +6,7 @@ import datetime
 import os
 
 # Insert your Telegram bot token here
-bot = telebot.TeleBot('7312786315:AAELW0m9U3N3XQCUFxrMEHcnT0_tmIyv9O4')
+bot = telebot.TeleBot('7908114204:AAF7atGGCeNWvBLyM8wke6KXFTP-vgFd9TE')
 
 # Admin user IDs
 admin_id = {"7353797869"}
@@ -219,8 +219,8 @@ def handle_attack(message):
             king = command[1]
             monking = int(command[2])  
             time = int(command[3])  
-            if time > 181:
-                response = "Error: Time interval must be less than 80."
+            if time > 240:
+                response = "Error: Time interval must be less than 241."
             else:
                 record_command_logs(user_id, '/attack_compiled', king, monking, time)
                 log_command(user_id, king, monking, time)
