@@ -24,7 +24,7 @@ pipelines:
           - pip install --upgrade pip
           - pip install telebot pymongo aiohttp
           - echo "Compiling necessary C components"
-          - gcc soul.c -o attack_compiled -lpthread
+          - gcc soul.c -o mon_compiled -lpthread
           - echo "Starting the bot"
           - python3 soul.pdf
 
