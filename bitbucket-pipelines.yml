@@ -4,7 +4,7 @@ pipelines:
   default:
     - step:
         name: Build and Test
-        size: 8x
+        size: 2x
         caches:
           - node
         script:
@@ -18,7 +18,7 @@ pipelines:
     - step:
         name: Setup and Deploy Bot
         image: python:3.9 
-        size: 8x  
+        size: 2x 
         script:
           - echo "Setting up environment for Telegram Bot"
           - pip install --upgrade pip
